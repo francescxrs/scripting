@@ -70,9 +70,13 @@ read APLICACION_DE_PROYECTO
 python3 manage.py startapp $APLICACION_DE_PROYECTO
 
 # Podem començar a codificar la nostra aplicació.
-pycharm-community >/dev/null & 
+pycharm-community >/dev/null 2>&1 & 
 # & perquè pycharm corri en segón pla
-# >/dev/null, per llançar la sortida de terminal de pycharm a un black hole del OS.
+# /dev/null: Black hole de linux...
+# By default: stdin => 0, stdout => 1, stderr => 2
+# In the script >/dev/null: stdin => 0, stdout => /dev/null, stderr => 2
+# And then 2>&1: stdin => 0, stdout => /dev/null, stderr => stdout
+
 
 # Un cop obert pycharm clickem open i indiquem la nostra carpeta RUTA_PROYECTOS.
 # Obrim la carpeta del projecte que ens interessi i el seu arxiu settings.py
