@@ -1,13 +1,30 @@
 #!/bin/bash
 
-# PREVIAMENTE...
-# Run sudo apt upgrade refresh the list of available packages and upgrade all installed packages.
+# PREVIAMENT, refresh the list of available packages and upgrade all installed packages.
 # sudo apt update
 
-# INSTALAR POSTGRES
-# sudo apt install libpq-dev postgresql postgresql-contrib
+# INSTAL·LAR EDITOR PYCHARM
+# sudo snap install pycharm-community --classic
 
-# INSTALAR MÓDULO VENV
+# INSTAL·LAR PAQUET libpq-dev. 
+# Header files for libpq5 (PostgreSQL library) and static library for compiling C programs 
+# to link with the libpq library in order to communicate with a PostgreSQL database backend. 
+# sudo apt install libpq-dev
+
+# INSTAL·LAR PostgreSQL. PostgreSQL is an object-relational SQL database management system. 
+# sudo apt install postgresql
+
+# INSTAL·LAR PAQUET postgresql-contrib
+# The postgresql-contrib package includes extensions and additions that are distributed along 
+# with the PostgreSQL sources, but are not (yet) officially part of the PostgreSQL core. 
+# sudo apt install postgresql-contrib
+
+# INSTAL·LAR GESTOR DE LLIBRERIES/PAQUETS pip3
+# Standard package-management system used to install and manage software packages written in
+# Python. python 3.4 and later include pip (pip3 for Python 3) by default.
+# sudo apt install python3-pip
+
+# INSTAL·LAR MÒDUL venv
 # The venv module provides support for creating lightweight “virtual environments” 
 # with their own site directories, optionally isolated from system site directories. 
 # Each virtual environment has its own Python binary (which matches the version of the 
@@ -15,42 +32,53 @@
 # of installed Python packages in its site directories.
 # sudo apt-get install python3-venv
 
-# NOS UBICAMOS EN LA RUTA (CARPETA) CONTENEDORA DE CARPETAS DE PROYECTOS
-echo "Introduzca ruta de proyectos relativa a \$HOME (~/ruta):" 
+# ENS UBIQUEM EN RUTA (CARPETA) CONTENIDORA DE PROJECTES DJANGO
+echo "Introdueix ruta per a carpeta de projectes Django (relativa desde \$HOME, ~/ruta)" 
 read RUTA_PROYECTOS
 cd $HOME/$RUTA_PROYECTOS
 
-# CREAMOS CARPETA DE PROYECTO
-echo "Introduzca nombre para carpeta de proyecto:"
+# CREEM LA CARPETA DEL PROJECTE DJANGO
+echo "Introdueix nom per a carpeta de projecte Django"
 read CARPETA_PROYECTO
 mkdir $CARPETA_PROYECTO
 cd $CARPETA_PROYECTO
 
-# CREAMOS CARPETA PARA EL ENTORNO
+# CREEM LA CARPETA PER A L'ENTORN
 env="_env"
 python3 -m venv $CARPETA_PROYECTO$env
-# ACTIVAMOS CARPETA PARA EL ENTORNO
+# ACTIVEM CARPETA PER A L'ENTORN
 source $CARPETA_PROYECTO$env/bin/activate
 
-# INSTALAMOS LAS LIBRERIAS EN NUESTRO ENTORNO
+# INSTAL·LEM LLIBRERIES NECESSÀRIES
+# Psycopg: PostgreSQL database adapter for the Python programming language.
 pip3 install psycopg2
+# Django: web framework que respecta el patró de disseny MVC.
 pip3 install django
 
-# CREAMOS PROYECTO DJANGO
-echo "Introduzca nombre de proyecto Django:"
+# CREEM PROJECTE DJANGO
+echo "Introdueix nom de projecte Django"
 read NOMBRE_PROYECTO
 django-admin.py startproject $NOMBRE_PROYECTO .
 
-# ARRANCAMOS SERVIDOR I COMPROVAMOS SI FUNICIONA
+# PODEM ARRANCAR SERVIDOR PER COMPROVAR FUNCIONAMIENT
 # python3 manage.py runserver
+# COMPROVEM EN NAVEGADOR (PORT PER DEFECTE DJANGO: 8000): http://127.0.0.1:8000/ 
 
-# ANEM A LOCALHOST I PORT PER DEFECTE DE DJANGO (8000)
-# http://127.0.0.1:8000/ 
-
-# Creamos la primera aplicación (pages) de nuestro proyecto
-echo "Introduzca nombre de la aplicación para $NOMBRE_PROYECTO que desea crear"
+# CREEM LA PRIMERA APLICACIÓ (pages) DEL PROJECTE
+echo "Introdueix nom de l'aplicació per $NOMBRE_PROYECTO que desitjes crear"
 read APLICACION_DE_PROYECTO
 python3 manage.py startapp $APLICACION_DE_PROYECTO
 
-# PARA SALIR
+# Podem començar a codificar la nostra aplicació.
+pycharm-community >/dev/null & 
+# & perquè pycharm corri en segón pla
+# >/dev/null, per llançar la sortida de terminal de pycharm a un black hole del OS.
+
+# Un cop obert pycharm clickem open i indiquem la nostra carpeta RUTA_PROYECTOS.
+# Obrim la carpeta del projecte que ens interessi i el seu arxiu settings.py
+# En settings.py busquem INSTALLED_APPS
+# Afegim a INSTALLED_APPS l'aplicació creada (APLICACION_DE_PROYECTO) tal que:
+# 'APLICACION_DE_PROYECTO',
+
+# Per sortir de environment en shell fer:
 # deactivate
