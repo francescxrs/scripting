@@ -4,6 +4,7 @@
 # sudo apt update
 
 # INSTAL·LAR EDITOR PYCHARM
+# sudo apt install snap
 # sudo snap install pycharm-community --classic
 
 # INSTAL·LAR PAQUET libpq-dev. 
