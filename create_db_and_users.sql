@@ -13,22 +13,23 @@ ALTER ROLE proyecto_03_user SET client_encoding TO 'utf8';
 ALTER ROLE proyecto_03_user SET default_transaction_isolation TO 'read committed';
 -- Configuració horaria
 ALTER ROLE proyecto_03_user SET timezone TO 'UTC';
+
 -- Assignació de permisos a usuari tipus 'Déu'
-GRANT ALL PRIVILEGES ON proyecto_03_db TO proyecto_03_user;
+GRANT ALL PRIVILEGES ON DATABASE proyecto_03_db TO proyecto_03_user;
 
 -- Creem carpeta (schema) per a Tables principals, prescindint de l'schema default 'public'.
 CREATE SCHEMA appbasics;
 
--- Creem taula entitat
-CREATE TABLE entitat(
-    id NUMBER(6) PRIMARY KEY,
-    nom VARCHAR2(60) NOT NULL
-);
-
 -- Creem seqüència i registres
 CREATE SEQUENCE enum_enters_seq START WITH 1 INCREMENT BY 1;
 
+-- Creem taula entitat
+CREATE TABLE entitat(
+    id NUMERIC(6) DEFAULT nextval('enum_enters_seq') PRIMARY KEY,
+    nom VARCHAR(60) NOT NULL
+);
+
+ALTER TABLE entitat OWNER TO proyecto_03_user;
+
 -- L'insert de torn seria tal que:
--- INSERT INTO entitat VALUES(enum_enters_seq.NEXTVAL,'Nomdetorn Cognomdetorn Cognomdetorndos');
-
-
+-- INSERT INTO entitat(id,nom) VALUES(DEFAULT,'Nomdetorn Cognomdetorn Cognomdetorndos');
