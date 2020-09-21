@@ -1,4 +1,6 @@
 -- PostgreSQL
+-- Consultar tots els schema de una base de dades:
+-- select schema_name from information_schema.schemata;
 
 -- Creem base de dades proyecto_03_db
 CREATE DATABASE proyecto_03_db;
@@ -17,9 +19,6 @@ ALTER ROLE proyecto_03_user SET timezone TO 'UTC';
 -- Assignació de permisos a usuari tipus 'Déu'
 GRANT ALL PRIVILEGES ON DATABASE proyecto_03_db TO proyecto_03_user;
 
--- Creem carpeta (schema) per a Tables principals, prescindint de l'schema default 'public'.
-CREATE SCHEMA appbasics;
-
 -- Creem seqüència i registres
 CREATE SEQUENCE enum_enters_seq START WITH 1 INCREMENT BY 1;
 
@@ -29,7 +28,7 @@ CREATE TABLE entitat(
     nom VARCHAR(60) NOT NULL
 );
 
-ALTER TABLE entitat OWNER TO proyecto_03_user;
+ALTER TABLE entitat OWNER TO proyecto_03_user; 
 
 -- L'insert de torn seria tal que:
 -- INSERT INTO entitat(id,nom) VALUES(DEFAULT,'Nomdetorn Cognomdetorn Cognomdetorndos');
