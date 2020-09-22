@@ -70,6 +70,10 @@ echo "Introdueix nom de l'aplicació per $NOMBRE_PROYECTO que desitjes crear"
 read APLICACION_DE_PROYECTO
 python3 manage.py startapp $APLICACION_DE_PROYECTO
 
+# Creem carpeta templates i static en carpeta de l'aplicació
+mkdir $APLICACION_DE_PROYECTO/templates
+mkdir $APLICACION_DE_PROYECTO/static
+
 # Podem començar a codificar la nostra aplicació.
 pycharm-community >/dev/null 2>&1 & 
 # & perquè pycharm corri en segón pla
@@ -78,12 +82,18 @@ pycharm-community >/dev/null 2>&1 &
 # In the script >/dev/null: stdin => 0, stdout => /dev/null, stderr => 2
 # And then 2>&1: stdin => 0, stdout => /dev/null, stderr => stdout
 
-
 # Un cop obert pycharm clickem open i indiquem la nostra carpeta RUTA_PROYECTOS.
 # Obrim la carpeta del projecte que ens interessi i el seu arxiu settings.py
 # En settings.py busquem INSTALLED_APPS
 # Afegim a INSTALLED_APPS l'aplicació creada (APLICACION_DE_PROYECTO) tal que:
 # 'APLICACION_DE_PROYECTO',
+echo "Afegeix a settings.py > INSTALLED_APPS l'aplicació: $APLICACION_DE_PROYECTO"
 
 # Per sortir de environment en shell fer:
 # deactivate
+echo "Per a sortir utilitza 'deactivate'"
+
+
+
+
+

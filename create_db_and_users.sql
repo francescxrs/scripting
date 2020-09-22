@@ -1,4 +1,5 @@
 -- PostgreSQL
+
 -- Consultar tots els schema de una base de dades:
 -- select schema_name from information_schema.schemata;
 
@@ -28,7 +29,10 @@ CREATE TABLE entitat(
     nom VARCHAR(60) NOT NULL
 );
 
-ALTER TABLE entitat OWNER TO proyecto_03_user; 
+-- Donem permisos a usuari
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO proyecto_03_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO proyecto_03_user;
+GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO proyecto_03_user;
 
 -- L'insert de torn seria tal que:
 -- INSERT INTO entitat(id,nom) VALUES(DEFAULT,'Nomdetorn Cognomdetorn Cognomdetorndos');
