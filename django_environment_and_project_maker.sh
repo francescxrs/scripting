@@ -1,38 +1,5 @@
 #!/bin/bash
 
-# PREVIAMENT, refresh the list of available packages and upgrade all installed packages.
-# sudo apt update
-
-# INSTAL·LAR EDITOR PYCHARM
-# sudo apt install snap
-# sudo snap install pycharm-community --classic
-
-# INSTAL·LAR PAQUET libpq-dev. 
-# Header files for libpq5 (PostgreSQL library) and static library for compiling C programs 
-# to link with the libpq library in order to communicate with a PostgreSQL database backend. 
-# sudo apt install libpq-dev
-
-# INSTAL·LAR PostgreSQL. PostgreSQL is an object-relational SQL database management system. 
-# sudo apt install postgresql
-
-# INSTAL·LAR PAQUET postgresql-contrib
-# The postgresql-contrib package includes extensions and additions that are distributed along 
-# with the PostgreSQL sources, but are not (yet) officially part of the PostgreSQL core. 
-# sudo apt install postgresql-contrib
-
-# INSTAL·LAR GESTOR DE LLIBRERIES/PAQUETS pip3
-# Standard package-management system used to install and manage software packages written in
-# Python. python 3.4 and later include pip (pip3 for Python 3) by default.
-# sudo apt install python3-pip
-
-# INSTAL·LAR MÒDUL venv
-# The venv module provides support for creating lightweight “virtual environments” 
-# with their own site directories, optionally isolated from system site directories. 
-# Each virtual environment has its own Python binary (which matches the version of the 
-# binary that was used to create this environment) and can have its own independent set 
-# of installed Python packages in its site directories.
-# sudo apt-get install python3-venv
-
 # ENS UBIQUEM EN RUTA (CARPETA) CONTENIDORA DE PROJECTES DJANGO
 echo "Introdueix ruta per a carpeta de projectes Django (relativa desde \$HOME, ~/ruta)" 
 read RUTA_PROYECTOS
@@ -59,11 +26,7 @@ pip3 install django
 # CREEM PROJECTE DJANGO
 echo "Introdueix nom de projecte Django"
 read NOMBRE_PROYECTO
-django-admin.py startproject $NOMBRE_PROYECTO .
-
-# PODEM ARRANCAR SERVIDOR PER COMPROVAR FUNCIONAMIENT
-# python3 manage.py runserver
-# COMPROVEM EN NAVEGADOR (PORT PER DEFECTE DJANGO: 8000): http://127.0.0.1:8000/ 
+django-admin.py startproject $NOMBRE_PROYECTO.
 
 # CREEM LA PRIMERA APLICACIÓ (pages) DEL PROJECTE
 echo "Introdueix nom de l'aplicació per $NOMBRE_PROYECTO que desitjes crear"
@@ -73,6 +36,7 @@ python3 manage.py startapp $APLICACION_DE_PROYECTO
 # Creem carpeta templates i static en carpeta de l'aplicació
 mkdir $APLICACION_DE_PROYECTO/templates
 mkdir $APLICACION_DE_PROYECTO/static
+echo "Carpetes templates i static creades en aplicació"
 
 # Podem començar a codificar la nostra aplicació.
 pycharm-community >/dev/null 2>&1 & 
@@ -87,11 +51,19 @@ pycharm-community >/dev/null 2>&1 &
 # En settings.py busquem INSTALLED_APPS
 # Afegim a INSTALLED_APPS l'aplicació creada (APLICACION_DE_PROYECTO) tal que:
 # 'APLICACION_DE_PROYECTO',
-echo "Afegeix a settings.py > INSTALLED_APPS l'aplicació: $APLICACION_DE_PROYECTO"
+echo "Afegeix desde pycharm a settings.py > INSTALLED_APPS, l'aplicació: $APLICACION_DE_PROYECTO"
+echo "Prem qualsevol tecla per continuar"
+read
 
 # Per sortir de environment en shell fer:
 # deactivate
-echo "Per a sortir utilitza 'deactivate'"
+echo "Per a sortir de l'environment quan escaigui utilitza 'deactivate'"
+echo "Prem qualsevol tecla per continuar"
+read
+
+echo "Arranquem servidor en terminal apart..."
+# x-terminal-emulator -e "COMMAND" ens executa en una nova terminal COMMAND.
+x-terminal-emulator -e "python3 manage.py runserver"
 
 
 
