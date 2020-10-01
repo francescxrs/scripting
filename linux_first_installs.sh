@@ -5,7 +5,8 @@ sudo apt update
 
 # INSTAL·LAR EDITOR PYCHARM
 sudo apt install snap
-sudo snap install pycharm-community --classic
+sudo snap install --classic pycharm-community
+sudo snap install --classic code
 
 # INSTAL·LAR PAQUET libpq-dev. 
 # Header files for libpq5 (PostgreSQL library) and static library for compiling C programs 
