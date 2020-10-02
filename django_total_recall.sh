@@ -1,14 +1,12 @@
 #!/bin/bash
 
 # UBICARSE EN CARPETA DE PROJECTES DJANGO
-echo "
-francescxrs: Introdueix ruta per a carpeta de projectes Django (relativa desde \$HOME: ~/ruta)" 
+echo -e "\e[95m\nIntrodueix ruta per a carpeta de projectes Django (relativa desde \$HOME: ~/ruta)\e[0m" 
 read RUTA_PROYECTOS
 cd $HOME/$RUTA_PROYECTOS
 
 # CREAR CARPETA DE PROJECTE DJANGO
-echo "
-francescxrs: Introdueix nom per a carpeta de projecte Django"
+echo -e "\e[95m\nIntrodueix nom per a carpeta de projecte Django\e[0m"
 read CARPETA_PROYECTO
 mkdir $CARPETA_PROYECTO
 cd $CARPETA_PROYECTO
@@ -16,8 +14,7 @@ cd $CARPETA_PROYECTO
 # CREAR CARPETA PER A L'ENTORN
 env="_env"
 python3 -m venv $CARPETA_PROYECTO$env
-echo "
-francescxrs: Carpeta d'entorn creada"
+echo -e "\e[95m\nCarpeta d'entorn creada\e[0m"
 # ACTIVAR CARPETA PER A L'ENTORN
 source $CARPETA_PROYECTO$env/bin/activate
 
@@ -26,26 +23,22 @@ source $CARPETA_PROYECTO$env/bin/activate
 pip3 install psycopg2
 # Django: web framework que respecta el patró de disseny MVC.
 pip3 install django
-echo "
-francescxrs: Llibreria psycopg2 i framework django instal·lats"
+echo -e "\e[95m\nLlibreria psycopg2 i framework django instal·lats\e[0m"
 
 # CREAR PROJECTE DJANGO
-echo "
-francescxrs: Introdueix nom de projecte Django"
+echo -e "\e[95m\nIntrodueix nom de projecte Django\e[0m"
 read NOMBRE_PROYECTO
 django-admin.py startproject $NOMBRE_PROYECTO .
 
 # CREAR LA PRIMERA APLICACIÓ DEL PROJECTE
-echo "
-francescxrs: Introdueix nom de l'aplicació que desitjes crear per a projecte '$NOMBRE_PROYECTO'"
+echo -e "\e[95m\nIntrodueix nom de l'aplicació que desitjes crear per a projecte '$NOMBRE_PROYECTO'\e[0m"
 read APLICACION_DE_PROYECTO
 python3 manage.py startapp $APLICACION_DE_PROYECTO
 
 # CREAR CARPETA templates I static EN CARPETA DE L'APLICACIÓ
 mkdir $APLICACION_DE_PROYECTO/templates
 mkdir $APLICACION_DE_PROYECTO/static
-echo "
-francescxrs: Carpetes 'templates' i 'static' creades en aplicació"
+echo -e "\e[95m\nCarpetes 'templates' i 'static' creades en aplicació\e[0m"
 
 # CODIFICACIÓ DE L'APLICATIU (ESCOLLIM pycharm)
 pycharm-community >/dev/null 2>&1 & 
@@ -56,22 +49,18 @@ pycharm-community >/dev/null 2>&1 &
 # And then 2>&1: stdin => 0, stdout => /dev/null, stderr => stdout
 
 # JA OBERT pycharm FER OPEN I ESCOLLIR CARPETA $RUTA_PROYECTOS.
-echo "
-francescxrs: Afegeix desde pycharm en l'arxiu settings.py dins la llista INSTALLED_APPS, \
-l'aplicació creada prèviament '$APLICACION_DE_PROYECTO'. Prem qualsevol tecla per continuar"
+echo -e "\e[95m\nAfegeix desde pycharm en l'arxiu settings.py dins la llista INSTALLED_APPS, \
+l'aplicació creada prèviament '$APLICACION_DE_PROYECTO'. Prem qualsevol tecla per continuar\e[0m"
 read
-echo "
-francescxrs: Per a sortir de l'environment quan escaigui utilitza 'deactivate'. \
-Prem qualsevol tecla per continuar"
+echo -e "\e[95m\nPer a sortir de l'environment quan escaigui utilitza 'deactivate'. \
+Prem qualsevol tecla per continuar\e[0m"
 read
 
-echo "
-francescxrs: Arranquem servidor en terminal apart"
+echo -e "\e[95m\nArranquem servidor en terminal apart\e[0m"
 # x-terminal-emulator -e "COMMAND" ens executa en una nova terminal COMMAND.
 x-terminal-emulator -e "python3 manage.py runserver"
 
-echo "
-francescxrs: IMPORTANT: La configuració d'arxiu pg_hba.conf està feta?
+echo -e "\e[95m\nIMPORTANT: La configuració d'arxiu pg_hba.conf està feta?
 Si és el 1r cop que creem projecte django modifica l'arxiu \
 /etc/postgresql/11/main/pg_hba.conf, \
 linea 90 aproximadament. Cambiarem el mode d'encriptació de peer a md5. \
@@ -79,25 +68,21 @@ L'encriptació peer amb l'usuari on ens trobem (oc-admin) no funcionarà \
 entrant amb un altre usuari dels que s'hagin creat prèviament. \
 Hauríem doncs de tancar sessió, entrar amb usuari concret i conectar amb aquest usuari concret. \
 Amb md5 cambiem a una encriptació més simple que funciona per contrasenya. \
-Un cop modificat pg_hba.conf prem qualsevol tecla."
+Un cop modificat pg_hba.conf prem qualsevol tecla.\e[0m"
 read
 
 cd ~/Escritorio/scripting
 # Reiniciem servei psql
 sudo service postgresql restart
 
-echo "
-francescxrs: Reiniciem servei postgres"
+echo -e "\e[95m\nReiniciem servei postgres\e[0m"
 
 # Variables bash per a usuari i base de dades
-echo "
-francescxrs: Introdueix nom de base de dades"
+echo -e "\e[95m\nIntrodueix nom de base de dades\e[0m"
 read DB
-echo "
-francescxrs: Introdueix nom per a usuari"
+echo -e "\e[95m\nIntrodueix nom per a usuari\e[0m"
 read DB_USER
-echo "
-francescxrs: Introdueix contrasenya d'usuari"
+echo -e "\e[95m\nIntrodueix contrasenya d'usuari\e[0m"
 read DB_USER_PASSWORD
 
 # Creem arxiu _delete_db_and_users_$DB.
@@ -108,8 +93,7 @@ DROP DATABASE IF EXISTS $DB;
 DROP ROLE IF EXISTS $DB_USER;
 endOfFile
 
-echo "
-francescxrs: Arxiu _delete_db_and_users_$DB creat"
+echo -e "\e[95m\nArxiu _delete_db_and_users_$DB creat\e[0m"
 
 # Creem arxiu create_db_and_users_$DB.
 cat << endOfFile > $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_create_db_and_users_$DB.sql
@@ -131,25 +115,21 @@ GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO $DB_USER;
 -- Inserts serien tal que: INSERT INTO models(id,nom) VALUES(DEFAULT,'...');
 endOfFile
 
-echo "
-francescxrs: Arxiu _create_db_and_users_$DB creat"
+echo -e "\e[95m\nArxiu _create_db_and_users_$DB creat\e[0m"
 
 # Reiniciem servei psql
-echo "
-francescxrs: Reiniciem servei postgres"
+echo -e "\e[95m\nReiniciem servei postgres\e[0m"
 sudo service postgresql restart
 
 # Canviem a usuari postgres per crear base de dades.
-echo "
-francescxrs: Si existeix bd amb el mateix nom serà eliminada. Continuem? 
-Si és així prem qualsevol tecla"
+echo -e "\e[95m\nSi existeix bd amb el mateix nom serà eliminada. Continuem? 
+Si és així prem qualsevol tecla\e[0m"
 read
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_delete_db_and_users_$DB.sql
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_create_db_and_users_$DB.sql
 
 # Reiniciem servei psql
-echo "
-francescxrs: Reiniciem servei postgres"
+echo -e "\e[95m\nReiniciem servei postgres\e[0m"
 sudo service postgresql restart
 
 # Creem arxiu py de test de connexió a base de dades i l'executem.
@@ -172,6 +152,6 @@ endOfFile
 # Obrim terminal en paral·les postgres per a usuari creat
 x-terminal-emulator -e "psql -U $DB_USER $DB"
 
-echo "francescxrs: Fi de procés django_total_recall."
+echo -e "\e[95m\nFi de procés django_total_recall.\e[0m"
 
 
