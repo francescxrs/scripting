@@ -32,7 +32,7 @@ sudo apt install python3-pip
 # Each virtual environment has its own Python binary (which matches the version of the 
 # binary that was used to create this environment) and can have its own independent set 
 # of installed Python packages in its site directories.
-sudo apt-get install python3-venv
+sudo apt install python3-venv
 
 # INSTAL·LAR Llibreries python
 pip3 install psycopg2

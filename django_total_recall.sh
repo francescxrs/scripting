@@ -40,16 +40,16 @@ mkdir $APLICACION_DE_PROYECTO/templates
 mkdir $APLICACION_DE_PROYECTO/static
 echo -e "\e[95m\nCarpetes 'templates' i 'static' creades en aplicació\e[0m"
 
-# CODIFICACIÓ DE L'APLICATIU (ESCOLLIM pycharm)
-pycharm-community >/dev/null 2>&1 & 
-# & perquè pycharm corri en segón pla
+# CODIFICACIÓ DE L'APLICATIU (ESCOLLIM visual studio code)
+code >/dev/null 2>&1 & 
+# & perquè visual studio code corri en segón pla
 # /dev/null: Black hole de linux...
 # By default: stdin => 0, stdout => 1, stderr => 2
 # In the script >/dev/null: stdin => 0, stdout => /dev/null, stderr => 2
 # And then 2>&1: stdin => 0, stdout => /dev/null, stderr => stdout
 
-# JA OBERT pycharm FER OPEN I ESCOLLIR CARPETA $RUTA_PROYECTOS.
-echo -e "\e[95m\nAfegeix desde pycharm en l'arxiu settings.py dins la llista INSTALLED_APPS, \
+# JA OBERT visual studio code FER OPEN I ESCOLLIR CARPETA $RUTA_PROYECTOS.
+echo -e "\e[95m\nAfegeix desde code en l'arxiu settings.py dins la llista INSTALLED_APPS, \
 l'aplicació creada prèviament '$APLICACION_DE_PROYECTO'. Prem qualsevol tecla per continuar\e[0m"
 read
 echo -e "\e[95m\nPer a sortir de l'environment quan escaigui utilitza 'deactivate'. \
@@ -146,7 +146,7 @@ cd $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO
 source $CARPETA_PROYECTO$env/bin/activate
 x-terminal-emulator -e "python3 manage.py runserver"
 x-terminal-emulator -e "psql -U $DB_USER $DB"
-pycharm-community >/dev/null 2>&1 &
+code >/dev/null 2>&1 &
 endOfFile
 
 # Obrim terminal en paral·les postgres per a usuari creat
