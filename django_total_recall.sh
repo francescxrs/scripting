@@ -60,14 +60,18 @@ echo -e "\e[95m\nArranquem servidor en terminal apart\e[0m"
 # x-terminal-emulator -e "COMMAND" ens executa en una nova terminal COMMAND.
 x-terminal-emulator -e "python3 manage.py runserver"
 
-echo -e "\e[95m\nIMPORTANT: La configuració d'arxiu pg_hba.conf està feta?
-Si és el 1r cop que creem projecte django modifica l'arxiu \
-/etc/postgresql/11/main/pg_hba.conf, \
-linea 90 aproximadament. Cambiarem el mode d'encriptació de peer a md5. \
-L'encriptació peer amb l'usuari on ens trobem (oc-admin) no funcionarà \
-entrant amb un altre usuari dels que s'hagin creat prèviament. \
-Hauríem doncs de tancar sessió, entrar amb usuari concret i conectar amb aquest usuari concret. \
+echo -e "\e[95m\nIMPORTANT: La configuració de l'arxiu pg_hba.conf està correctament feta?
+Si és el 1r cop que creem projecte django o és un nou entorn del sistema operatiu cal \
+modificar l'arxiu /etc/postgresql/11/main/pg_hba.conf, en la linea 90 aproximadament. Cambiarem \
+el mode d'encriptació de peer a md5 en la Linia amb descripció:
+
+'# \"local\" is for Unix domain socket connections only'
+
 Amb md5 cambiem a una encriptació més simple que funciona per contrasenya. \
+El que fem és que l'encriptació funcioni amb l'usuari on ens trobem (oc-admin) però no \
+entrant amb un altre usuari dels que s'hagin creat prèviament. Haurem doncs de tancar sessió, \
+entrar amb usuari concret i connectar amb aquest usuari concret. 
+
 Un cop modificat pg_hba.conf prem qualsevol tecla.\e[0m"
 read
 
