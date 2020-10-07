@@ -50,7 +50,7 @@ code $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO >/dev/null 2>&1 &
 
 # JA OBERT visual studio code FER OPEN I ESCOLLIR CARPETA $RUTA_PROYECTOS.
 echo -e "\e[95m\nAfegeix desde code en l'arxiu settings.py dins la llista INSTALLED_APPS, \
-l'aplicació creada prèviament '$APLICACION_DE_PROYECTO'. Prem qualsevol tecla per continuar.\e[0m"
+l'aplicació creada prèviament '$APLICACION_DE_PROYECTO'. Prem intro per continuar.\e[0m"
 read
 echo -e "\e[95m\nPer a sortir de l'environment quan escaigui utilitza 'deactivate'. \
 Prem qualsevol tecla per continuar.\e[0m"
@@ -72,10 +72,9 @@ El que fem és que l'encriptació funcioni amb l'usuari on ens trobem (oc-admin)
 entrant amb un altre usuari dels que s'hagin creat prèviament. Haurem doncs de tancar sessió, \
 entrar amb usuari concret i connectar amb aquest usuari concret. 
 
-Un cop modificat pg_hba.conf prem qualsevol tecla.\e[0m"
+Un cop modificat pg_hba.conf prem intro per continuar.\e[0m"
 read
 
-cd ~/Escritorio/scripting
 # Reiniciem servei psql
 sudo service postgresql restart
 
@@ -127,7 +126,7 @@ sudo service postgresql restart
 
 # Canviem a usuari postgres per crear base de dades.
 echo -e "\e[95m\nSi existeix base de dades amb el mateix nom ($DB) serà eliminada. Continuem? 
-Si és així prem qualsevol tecla.\e[0m"
+Si és així prem intro per continuar.\e[0m"
 read
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_delete_db_and_users_$DB.sql
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_create_db_and_users_$DB.sql
