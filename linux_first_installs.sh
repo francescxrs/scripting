@@ -58,6 +58,9 @@ sudo apt update
 # Packages: Linux Standard Base, RPM, deb, Stampede (.slp) and Slackware (tgz).
 sudo apt install alien
 
+# Afegim unzip
+sudo apt install unzip
+
 else
 echo  -e "\e[95m\nNode name del sistema: $nodename\e[0m"
 
