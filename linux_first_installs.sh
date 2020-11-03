@@ -1,44 +1,80 @@
 #!/bin/bash
 
-# PREVIAMENT, refresh the list of available packages and upgrade all installed packages.
+# Utilitzarem variable per determinar si el node és raspberrypi
+nodename=$(uname -n)
+
+# Segons versió del OS (raspbian/ubuntu/...) seguirem un procés o altre. 
+if [ "${nodename}" != "raspberrypi" ]
+then 
+echo -e "\e[95m\nNode name del sistema: $nodename\e[0m"
+
+# Prèviament, refresh the list of available packages and upgrade all installed packages.
 sudo apt update
 
+<<<<<<< HEAD
 # INSTAL·LAR EDITORS
 sudo apt install snap
 # sudo snap install --classic pycharm-community
 sudo snap install --classic code
 
-# En OS Raspbian probem instal.lar code de la seguent manera.
-# cd ~
-# wget https://github.com/stevedesmond-ca/vscode-arm/releases/download/1.28.2/vscode-1.28.2.deb
-# sudo apt install ./vscode-1.28.2.deb
+# Instal·lar editor Visual Studio Code
+sudo apt install -y snap
+# sudo snap install -y --classic pycharm-community
+sudo snap install -y --classic code
 
-# INSTAL·LAR PAQUET libpq-dev. 
+# Instal·lar paquet libpq-dev. 
 # Header files for libpq5 (PostgreSQL library) and static library for compiling C programs 
 # to link with the libpq library in order to communicate with a PostgreSQL database backend.
-sudo apt install libpq-dev
+sudo apt install -y libpq-dev
 
-# INSTAL·LAR PostgreSQL. PostgreSQL is an object-relational SQL database management system.
-sudo apt install postgresql
+# Instal·lar PostgreSQL. PostgreSQL is an object-relational SQL database management system.
+sudo apt install -y postgresql
 
-# INSTAL·LAR PAQUET postgresql-contrib
+# Instal·lar paquet postgresql-contrib
 # The postgresql-contrib package includes extensions and additions that are distributed along 
 # with the PostgreSQL sources, but are not (yet) officially part of the PostgreSQL core.
-sudo apt install postgresql-contrib
+sudo apt install -y postgresql-contrib
 
-# INSTAL·LAR GESTOR DE LLIBRERIES/PAQUETS pip3
+# Instal·lar gestor de llibreries/paquets pip3
 # Standard package-management system used to install and manage software packages written in
 # Python. python 3.4 and later include pip (pip3 for Python 3) by default.
-sudo apt install python3-pip
+sudo apt install -y python3-pip
 
-# INSTAL·LAR MÒDUL venv
+# Instal·lar mòdul venv
 # The venv module provides support for creating lightweight “virtual environments” 
 # with their own site directories, optionally isolated from system site directories. 
 # Each virtual environment has its own Python binary (which matches the version of the 
 # binary that was used to create this environment) and can have its own independent set 
 # of installed Python packages in its site directories.
-sudo apt install python3-venv
+sudo apt install -y python3-venv
 
-# INSTAL·LAR Llibreries python
+# Instal·lar Llibreries python
 pip3 install psycopg2
 pip3 install django
+
+# Instal·lar Java Development Kit (jdk) i Java Runtime Environment (jre) en diferents versions.
+sudo apt install default-jre
+sudo apt install default-jdk
+sudo apt install openjdk-8-jdk
+
+# Afegim repositori universe de l'instal·lador apt i actualitzem apt.
+sudo add-apt-repository universe
+sudo apt update
+# Instal·lem alien. Alien converts different Linux package distribution file formats to Debian and viceversa.
+# Packages: Linux Standard Base, RPM, deb, Stampede (.slp) and Slackware (tgz).
+sudo apt install alien
+
+# Afegim unzip
+sudo apt install unzip
+
+else
+
+echo  -e "\e[95m\nNode name del sistema: $nodename\e[0m"
+
+# En OS Raspbian probem instal.lar code de la seguent manera.
+cd ~
+wget https://github.com/stevedesmond-ca/vscode-arm/releases/download/1.28.2/vscode-1.28.2.deb
+sudo apt install ./vscode-1.28.2.deb
+
+fi
+
