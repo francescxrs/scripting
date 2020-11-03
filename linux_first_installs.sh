@@ -11,7 +11,6 @@ echo -e "\e[95m\nNode name del sistema: $nodename\e[0m"
 # Prèviament, refresh the list of available packages and upgrade all installed packages.
 sudo apt update
 
-<<<<<<< HEAD
 # INSTAL·LAR EDITORS
 sudo apt install snap
 # sudo snap install --classic pycharm-community
