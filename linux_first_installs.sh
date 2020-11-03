@@ -3,10 +3,15 @@
 # PREVIAMENT, refresh the list of available packages and upgrade all installed packages.
 sudo apt update
 
-# INSTAL·LAR EDITOR PYCHARM
+# INSTAL·LAR EDITORS
 sudo apt install snap
-sudo snap install --classic pycharm-community
+# sudo snap install --classic pycharm-community
 sudo snap install --classic code
+
+# En OS Raspbian probem instal.lar code de la seguent manera.
+# cd ~
+# wget https://github.com/stevedesmond-ca/vscode-arm/releases/download/1.28.2/vscode-1.28.2.deb
+# sudo apt install ./vscode-1.28.2.deb
 
 # INSTAL·LAR PAQUET libpq-dev. 
 # Header files for libpq5 (PostgreSQL library) and static library for compiling C programs 
