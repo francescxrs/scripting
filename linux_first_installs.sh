@@ -6,7 +6,7 @@ nodename=$(uname -n)
 # Segons versió del OS (raspbian/ubuntu/...) seguirem un procés o altre. 
 if [ "${nodename}" != "raspberrypi" ]
 then 
-echo -e "\e[95m\nNode name del sistema: $nodename\e[0m"
+echo -e "\e[95m\nEntrem en instal·lació per a sistema operatiu $nodename\e[0m"
 
 # Prèviament, refresh the list of available packages and upgrade all installed packages.
 sudo apt update
@@ -68,11 +68,13 @@ sudo apt install unzip
 
 else
 
-echo  -e "\e[95m\nNode name del sistema: $nodename\e[0m"
+echo  -e "\e[95m\nEntrem en instal·lació per a sistema operatiu raspberry pi.\e[0m"
 
 # En OS Raspbian probem instal.lar code de la seguent manera.
 cd ~
+# wget: non-interactive download of files from the Web >> En aquest cas un arxiu .deb
 wget https://github.com/stevedesmond-ca/vscode-arm/releases/download/1.28.2/vscode-1.28.2.deb
+# Install d'un arxiu .deb desde la mateixa ruta de l'arxiu
 sudo apt install ./vscode-1.28.2.deb
 
 fi
