@@ -35,26 +35,31 @@ sudo sed -i '/\/swapfile/d' /etc/fstab
 # count=N Número de paquets. Exemples de càlcul (1024B=1KiB, 1024KiB=1MiB, 1024MiB=1GiB) 
 #		Si definim bs com 1024 (bytes) >> bs=1024B=1kiB. Hem definits els paquets de tamany 1KiB.
 # 		Una swap de 512MiB, quants paquets? 512x1024KiB = 524288KiB o 524288 Paquets.
-# 		una swap de 1GiB, quants paquets? 1x1024MiB=1x1024x1024KiB = 1048576KiB o 1048576 Paquets.
-sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576
+# 		una swap de 4GiB, quants paquets? 4x1024MiB=4x1024x1024KiB = 4194304KiB o 4194304 Paquets.
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=4194304
 # Estrucutra change owner: chown [new-owner]:[new-group] [file-name]
-chown root:root /swapfile
+sudo chown root:root /swapfile
 # rwx >> read, write, execute
-# ugoa >> u:propietari, g:grup del propietari, o:altres usuaris, a:u+g+o
-chmod u=,g=rw,o= /swapfile # o bé: chmod 060 /swapfile; omitim 'a' perquè definim ugo.
+# ugoa >> u:propietari, g:grup del propietari, o:altres usuaris, a:u+g+o (no utilitzar)
+# Fer funciona chmod amb format 'u=rwx,g=rwx,o=rwx' o bé '000'.
+sudo chmod u=rw,g=,o= /swapfile # o bé: sudo chmod 600 /swapfile; 
 # Set up a linux swap area. 
-mkswap /swapfile
+sudo mkswap /swapfile
 # Enable swap area
-swapon /swapfile
+sudo swapon /swapfile
 # Afegim a /etc/fstab en última linea: "/swapfile none swap sw 0 0"
-sed -i '$a /swapfile none swap sw 0 0' /etc/fstab
+sudo sed -i '$a /swapfile none swap sw 0 0' /etc/fstab
 # comprovem arxiu /etc/fstab
 # 		drwxrwxrwx >> Significat: 
 #			1: - = file, d = directory, l = link 
-#			2-4: u (propietari) >> read, write, execute 
-#			5-7: g (grup del propietari) >> read, write. execute 
-#			8-10: o (altres usuaris) >> read, write. execute
-ls -la /etc/fstab
+#			2-4: u (propietari) >> 2 read, 3 write, 4 execute 
+#			5-7: g (grup del propietari) >> 5 read, 6 write. 7 execute 
+#			8-10: o (altres usuaris) >> 8 read, 9 write. 10 execute
+
+# 5. Comprovacions
+cat /proc/swaps
+free -m
+swapon -s
 
 
 
