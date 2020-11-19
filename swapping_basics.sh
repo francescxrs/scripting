@@ -23,8 +23,8 @@ sudo rm /swapfile
 sudo cp /etc/fstab /etc/fstab.bak
 # Edició en stream del arxiu fstab in place (-i).
 # fstab (file system tables) és un arxiu de configuració per particions/dispositius del sistema. 
-# La regex '/elquesigui/d' utilitzada fa delete de 'elquesigui'
-# Per tant fem delete de '/swapfile' >> '\/' fa de '/' dins la pròpia regex de sed. 
+# La regex '/elquesigui/d' utilitzada fa delete de linea de 'elquesigui'
+# Per tant fem delete de linea on trobi '/swapfile' >> '\/' fa de '/' dins la pròpia regex de sed. 
 sudo sed -i '/\/swapfile/d' /etc/fstab
 
 # 4. Crear una nova partició swap
@@ -35,8 +35,8 @@ sudo sed -i '/\/swapfile/d' /etc/fstab
 # count=N Número de paquets. Exemples de càlcul (1024B=1KiB, 1024KiB=1MiB, 1024MiB=1GiB) 
 #		Si definim bs com 1024 (bytes) >> bs=1024B=1kiB. Hem definits els paquets de tamany 1KiB.
 # 		Una swap de 512MiB, quants paquets? 512x1024KiB = 524288KiB o 524288 Paquets.
-# 		una swap de 4GiB, quants paquets? 4x1024MiB=4x1024x1024KiB = 4194304KiB o 4194304 Paquets.
-sudo dd if=/dev/zero of=/swapfile bs=1024 count=4194304
+# 		una swap de 10GiB, quants paquets? 10x1024MiB=4x1024x1024KiB = 10485760KiB o 10485760 Paquets.
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=10485760
 # Estrucutra change owner: chown [new-owner]:[new-group] [file-name]
 sudo chown root:root /swapfile
 # rwx >> read, write, execute

@@ -101,6 +101,7 @@ echo -e "\e[95m\nArxiu _delete_db_and_users_$DB creat.\e[0m"
 # Creem arxiu create_db_and_users_$DB.
 cat << endOfFile > $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_create_db_and_users_$DB.sql
 CREATE DATABASE $DB;
+-- Switch connection to a new database
 \c $DB;
 CREATE USER $DB_USER WITH PASSWORD '$DB_USER';
 ALTER ROLE $DB_USER SET client_encoding TO 'utf8';
@@ -115,7 +116,6 @@ CREATE TABLE models(
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO $DB_USER;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO $DB_USER;
 GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO $DB_USER;
--- Inserts serien tal que: INSERT INTO models(id,nom) VALUES(DEFAULT,'...');
 endOfFile
 
 echo -e "\e[95m\nArxiu _create_db_and_users_$DB creat.\e[0m"
@@ -128,6 +128,7 @@ sudo service postgresql restart
 echo -e "\e[95m\nSi existeix base de dades amb el mateix nom ($DB) serà eliminada. Continuem? 
 Si és així prem intro per continuar.\e[0m"
 read
+# Es connecta amb l'usuari postgres i no cal apuntar a cap db per a l'script perquè la creem i fem \c
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_delete_db_and_users_$DB.sql
 sudo -u postgres psql -f $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO/_create_db_and_users_$DB.sql
 
@@ -152,7 +153,7 @@ x-terminal-emulator -e "psql -U $DB_USER $DB"
 code $HOME/$RUTA_PROYECTOS/$CARPETA_PROYECTO >/dev/null 2>&1 &
 endOfFile
 
-# Obrim terminal en paral·les postgres per a usuari creat
+# Obrim terminal en paral·lel i executem postgresql per a usuari creat
 x-terminal-emulator -e "psql -U $DB_USER $DB"
 
 echo -e "\e[95m\nFi de procés django_total_recall.\e[0m"
