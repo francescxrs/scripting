@@ -15,4 +15,8 @@
 # echo personalitzat
 # echo -e "\e[95m\n Hello world! \e[0m"
 
+# Alumnos
+# https://drive.google.com/drive/folders/1iEO0HV4jXiFBjwB2CXqACvf2jtyxNNvY?usp=sharing
 
+# Profe
+# https://drive.google.com/drive/folders/134RjyLF97mZwVgb7XXStqYWqTsjcKgug?usp=sharing
