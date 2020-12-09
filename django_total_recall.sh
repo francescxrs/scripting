@@ -62,8 +62,9 @@ x-terminal-emulator -e "python3 manage.py runserver"
 
 echo -e "\e[95m\nIMPORTANT: La configuració de l'arxiu pg_hba.conf està correctament feta?
 Si és el 1r cop que creem projecte django o és un nou entorn del sistema operatiu cal \
-modificar l'arxiu /etc/postgresql/11/main/pg_hba.conf, en la linea 90 aproximadament. Cambiarem \
-el mode d'encriptació de peer a md5 en la Linia amb descripció:
+modificar l'arxiu /etc/postgresql/11/main/pg_hba.conf, en la linea 90 aproximadament \
+(la carpeta 11 pot diferir en numero i ser 12...). Cambiarem el mode d'encriptació de \
+peer a md5 en la Linia amb descripció:
 
 '# \"local\" is for Unix domain socket connections only'
 
