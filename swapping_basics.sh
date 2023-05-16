@@ -60,6 +60,3 @@ sudo sed -i '$a /swapfile none swap sw 0 0' /etc/fstab
 cat /proc/swaps
 free -m
 swapon -s
-
-
-
