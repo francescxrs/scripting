@@ -69,7 +69,7 @@ peer a md5 en la Linia amb descripció:
 '# \"local\" is for Unix domain socket connections only'
 
 Amb md5 cambiem a una encriptació més simple que funciona per contrasenya. \
-El que fem és que l'encriptació funcioni amb l'usuari on ens trobem (oc-admin) però no \
+El que fem és que l'encriptació funcioni amb l'usuari on ens trobem però no \
 entrant amb un altre usuari dels que s'hagin creat prèviament. Haurem doncs de tancar sessió, \
 entrar amb usuari concret i connectar amb aquest usuari concret. 
 
@@ -158,5 +158,3 @@ endOfFile
 x-terminal-emulator -e "psql -U $DB_USER $DB"
 
 echo -e "\e[95m\nFi de procés django_total_recall.\e[0m"
-
-
