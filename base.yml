@@ -1,0 +1,98 @@
+# espanso match file
+# https://espanso.org/docs/
+
+matches:
+
+  # Print the current date
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y/%m/%d"
+
+  # Print the output of a shell command
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo 'Hello from your shell'"
+  
+  # Personal shit  
+  - trigger: ",,."
+    replace: "·"
+  - trigger: ",,do"
+    replace: "º"
+  - trigger: ",,da"
+    replace: "ª"
+  - trigger: ",,a"
+    replace: "à"
+  - trigger: ",,A"
+    replace: "À"
+  - trigger: "..a"
+    replace: "á"
+  - trigger: "..A"
+    replace: "Á"
+  - trigger: ",,e"
+    replace: "è"
+  - trigger: "..e"
+    replace: "é"
+  - trigger: ",,E"
+    replace: "È"
+  - trigger: "..E"
+    replace: "É"
+  - trigger: "..i"
+    replace: "í"
+  - trigger: "..I"
+    replace: "Í"
+  - trigger: ",,o"
+    replace: "ò"
+  - trigger: ",,O"
+    replace: "Ò"
+  - trigger: "..o"
+    replace: "ó"
+  - trigger: "..O"
+    replace: "Ó"
+  - trigger: "..u"
+    replace: "ú"
+  - trigger: "..U"
+    replace: "Ú"
+  - trigger: ",,u"
+    replace: "ü"
+  - trigger: ",,U"
+    replace: "Ü"
+  - trigger: ",,c"
+    replace: "ç"
+  - trigger: ",,C"
+    replace: "Ç"
+  - trigger: ",,n"
+    replace: "ñ"
+  - trigger: ",,N"
+    replace: "Ñ"
+  - trigger: "br,,"
+    replace: "<br>"
+  - trigger: "br.."
+    replace: "\"<br>\""
+  - trigger: "exp,,"
+    replace: "xdg-open ."
+  - trigger: "lan,,"
+    replace: "setxkbmap us"
+  - trigger: "mp3tag,,"
+    replace: "wine ~/.wine/drive_c/Program\\ Files/Mp3tag/Mp3tag.exe"
+  - trigger: "fr@ "
+    replace: "francescreverter@hotmail.com"
+  - trigger: "fxr@ "
+    replace: "francescxreverter@gmail.com"
+  - trigger: "php,,"
+    replace: "<?php $|$ ?>"
+  - trigger: ":mysqlshell"
+    replace: "mysql -h 127.0.0.1 -P 3306 -u root -p mysql"
+  - trigger: ":mysqldumpcopy"
+    replace: "mysqldump --column-statistics=0 -h 127.0.0.1 -P 3306 -u root BASEDEDADES > RUTA/DOCUMENT.sql"
+  - trigger: ":mysqldumppaste"
+    replace: "mysql -h 127.0.0.1 -P 3306 -u root BASEDEDADES < /RUTA/DOCUMENT.sql"
+  - trigger: "mdinit,,"
+    replace: "---\noutput: pdf_document\ngeometry: \"left=2cm,right=1.75cm,top=2.5cm,bottom=2.25cm\"\ntitle: \"My first markdown test\"\nauthor: Francesc X. Reverter\ndate: Fecha\ntoc: true\ntoc-title: \"Índice\"\nheader-includes:\n\t\\usepackage{fancyhdr}\n\t\\pagestyle{fancy}\n\t\\fancyhead[L]{Texto Izquierda}\n\t\\fancyhead[C]{Texto Centro}\n\t\\fancyhead[R]{texto Derecha}\n\t\\fancyfoot[C]{\\thepage}\n---\n\n\\thispagestyle{empty}\n\\pagebreak"
