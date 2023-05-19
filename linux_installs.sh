@@ -16,27 +16,30 @@ sudo apt install -y default-jre
 sudo apt install -y default-jdk
 sudo apt install -y python3 python3-pip
 sudo apt install -y neovim
-sudo apt install -y w3m surf qutebrowser chromium
+sudo apt install -y w3m w3m-img surf qutebrowser chromium
 sudo apt install -y ranger calcurse
 sudo apt install -y unzip
 sudo apt install -y vlc mpv
 
 # SUCKLESS STUFF
-sudo apt install -y build-essential
+sudo apt install -y gcc build-essential
 sudo apt install -y libx11-dev libxft-dev libxinerama-dev
 sudo apt install -y xinit
 mkdir suckless
 cd suckless
 git clone https://git.suckless.org/dwm
 cd dwm
+make
 sudo make clean install
 cd ..
 git clone https://git.suckless.org/st
 cd st
+make
 sudo make clean install
 cd ..
 git clone https://git.suckless.org/dmenu
 cd dmenu
+make
 sudo make clean install
 cd
 echo -e "\e[95m\nRecorda configurar arxiu /etc/X11/xinit/xinitrc (exec dwm) !!!\e[0m"
