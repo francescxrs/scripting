@@ -12,10 +12,8 @@ cd
 sudo apt-get update
 sudo apt install -y snap
 sudo apt install -y wget curl git neovim
-sudo apt install -y default-jre
-sudo apt install -y default-jdk
+sudo apt install -y default-jre default-jdk
 sudo apt install -y python3 python3-pip
-sudo apt install -y neovim
 sudo apt install -y w3m w3m-img surf qutebrowser chromium
 sudo apt install -y ranger calcurse
 sudo apt install -y unzip
