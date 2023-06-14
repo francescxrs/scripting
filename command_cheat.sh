@@ -1,29 +1,31 @@
 ## POSTGRE & DJANGO
 # Reiniciem servei postgresql
-#sudo service postgresql restart
+sudo service postgresql restart
 # Executar script sql postgre.
-#sudo -u postgres psql -f ruta/script.sql -d database
+sudo -u postgres psql -f ruta/script.sql -d database
 # Obrim terminal en paral·lel i executem postgresql per a usuari creat
-#x-terminal-emulator -e "psql -U $DB_USER $DB"
+x-terminal-emulator -e "psql -U dbuser db"
 
 ## SHELL COMMAND
 # Creem arxiu helloworld.txt
-#cat << endOfFile > helloworld.txt
-#hello world!
-#endOfFile
+cat << endOfFile > helloworld.txt
+hello world!
+endOfFile
 # echo personalitzat
-#echo -e "\e[95m\n Hello world! \e[0m"
+echo -e "\e[95m\n Hello world! \e[0m"
 # Process kill
-#pkill -15 ...
+pkill -15 procesquesigui
 # Reparar NTFS
-#sudo ntfsfix /dev/sda...
+sudo ntfsfix /dev/sdaquesigui
 # Autokey interface
-#autokey -c
+autokey -c
 # Per inicialitzar raspi
-#sudo raspi-config
+sudo raspi-config
+
+## MySQL
 # Procés per reinicialitzar mysqlshell
-#service mysql stop
-#sudo /opt/lampp/lampp restart
+service mysql stop
+sudo /opt/lampp/lampp restart
 
 ## DRIVES
 # CIM Alumnes
