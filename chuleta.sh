@@ -21,6 +21,9 @@
 #autokey -c
 # Per inicialitzar raspi
 #sudo raspi-config
+# Procés per reinicialitzar mysqlshell
+#service mysql stop
+#sudo /opt/lampp/lampp restart
 
 ## DRIVES
 # CIM Alumnes
