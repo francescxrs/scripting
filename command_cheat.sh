@@ -1,9 +1,9 @@
 ## POSTGRE & DJANGO
 # Reiniciem servei postgresql
-sudo service postgresql restart
 # Executar script sql postgre.
-sudo -u postgres psql -f ruta/script.sql -d database
 # Obrim terminal en paral·lel i executem postgresql per a usuari creat
+sudo service postgresql restart
+sudo -u postgres psql -f ruta/script.sql -d database
 x-terminal-emulator -e "psql -U dbuser db"
 
 ## SHELL COMMAND
