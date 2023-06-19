@@ -13,8 +13,6 @@ hello world!
 endOfFile
 # echo personalitzat
 echo -e "\e[95m\n Hello world! \e[0m"
-# Process kill
-pkill -15 procesquesigui
 # Reparar NTFS
 sudo ntfsfix /dev/sdaquesigui
 # Autokey interface
